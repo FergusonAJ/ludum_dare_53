@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd5xcy5m413uv"]
+
+[ext_resource type="Script" path="res://waveform_viz.gd" id="1_5x7gq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+script = ExtResource("1_5x7gq")
