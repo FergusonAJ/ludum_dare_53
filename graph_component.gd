@@ -4,7 +4,7 @@ class_name GraphComponent
 var id = -1
 var pos = Vector2(0,0)
 var type = GraphManager.NodeType.GENERIC
-var color = Color.RED
+var color = Color.BLACK
 var current_load = DataLoad.new()
 
 func _init(_id = -1, _pos = Vector2(0,0)):
@@ -32,3 +32,4 @@ func receive_load(new_load):
 	print('Generic receive_load:', new_load)
 	current_load = new_load.make_copy()
 	print(current_load)
+	color = current_load.get_color()

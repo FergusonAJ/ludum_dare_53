@@ -42,6 +42,16 @@ func add(other_load):
 func clear():
 	energy_charges.clear()
 	
+func get_color():
+	var color = Color.BLACK
+	if EnergyCharge.ChargeType.RED in energy_charges.keys():
+		color.r = 1.0
+	if EnergyCharge.ChargeType.GREEN in energy_charges.keys():
+		color.g = 1.0
+	if EnergyCharge.ChargeType.BLUE in energy_charges.keys():
+		color.b = 1.0
+	return color
+	
 func make_copy():
 	var new_copy = DataLoad.new()
 	new_copy.energy_charges = {}

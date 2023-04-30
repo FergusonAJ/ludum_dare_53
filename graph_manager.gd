@@ -38,7 +38,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	_draw()
 
 # Draw edges and possibly arrows to indicate direction	
 func draw_connections():
@@ -62,10 +62,12 @@ func draw_connections():
 			var midpoint = (node_a.pos + node_b.pos) / 2
 			var dir = node_a.pos.direction_to(node_b.pos)
 			var ortho = dir.orthogonal()
-			arrow_points_vec.push_back(midpoint + dir * 10)
-			arrow_points_vec.push_back(midpoint - (dir * 10) + ortho * 10)
-			arrow_points_vec.push_back(midpoint - (dir * 10) - ortho * 10)
+			var arrow_size = 7
+			arrow_points_vec.push_back(midpoint + dir * arrow_size)
+			arrow_points_vec.push_back(midpoint - (dir * arrow_size) + ortho * arrow_size)
+			arrow_points_vec.push_back(midpoint - (dir * arrow_size) - ortho * arrow_size)
 			draw_polygon(arrow_points_vec, PackedColorArray([Color.GRAY]))
+		
 
 # Render the connections of the graph
 func _draw():
@@ -82,7 +84,6 @@ func add_directed_edge(index_a, index_b):
 	
 # Pass information through the graph
 func process_graph():
-	
 	directed_adjacency_list = {}
 	reversed_adjacency_list = {}
 	var visited_list = []
