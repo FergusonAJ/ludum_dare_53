@@ -2,17 +2,21 @@ class_name GraphComponent_Junction extends GraphComponent
 
 var input_edge_list = []
 
+enum JunctionType {COMBINER, SPLITTER}
+var junction_type = JunctionType.SPLITTER
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	type = GraphManager.NodeType.JUNCTION
+	color = Color.GREEN
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func get_output():
-	return 1
+func process_load():
+	return current_load
 	
-func _draw():
-	draw_circle(pos, 10, Color.GREEN)
+func receive_load(new_load):
+	current_load.add(new_load)
 
